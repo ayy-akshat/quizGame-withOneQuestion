@@ -24,6 +24,8 @@ class QuestionForm
             this.answerInput,
             this.submitButton
         ];
+
+        this.resetButton = createButton('RESET');
     }
 
     display()
@@ -63,6 +65,18 @@ class QuestionForm
             player.answer = null;
             player.index = null;
             player.answered = true;
+        });
+
+        this.resetButton.position(700, 200);
+
+        this.resetButton.mousePressed(() =>
+        {
+            if (playerCount < 4)
+            {
+                return;
+            }
+            player.updatePlayerCount(0);
+            game.updateGameState(0);
         });
     }
 
