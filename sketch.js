@@ -87,7 +87,4 @@ function draw()
       location.reload();
     }
   }
-  text(gameState, 10, 100);
-  text(playerCount, 10, 120);
-  text(isDone, 10, 140);
 }
