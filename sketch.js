@@ -7,6 +7,8 @@ var playerCount, gameState;
 
 var allPlayers;
 
+var isDone = false;
+
 const riddle = 
 {
   question: 'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?',
@@ -54,6 +56,7 @@ function draw()
 
     if (gameState == 1)
     {
+      isDone = true;
       if (qForm)
       {
         qForm.hide();
@@ -68,6 +71,8 @@ function draw()
       textSize(30);
       textAlign(CENTER);
       text("Waiting for other players to answer...", width/2, height/2);
+      textSize(15);
+      text("If you are stuck on this and the page keeps reloading, just wait a few seconds or close and reopen the tab.", width/2, height*(3/4));
     }
     else
     {
@@ -76,5 +81,13 @@ function draw()
         qForm.show();
       }
     }
+
+    if (gameState == 0 && isDone)
+    {
+      location.reload();
+    }
   }
+  text(gameState, 10, 100);
+  text(playerCount, 10, 120);
+  text(isDone, 10, 140);
 }
